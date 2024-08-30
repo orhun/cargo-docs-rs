@@ -8,7 +8,7 @@ const MANIFEST_OPTIONS: &str = "Manifest Options";
 #[derive(Parser)]
 #[command(bin_name = "cargo", version, author, disable_help_subcommand = true)]
 pub enum Subcommand {
-    /// Immitate the documentation build that docs.rs would do
+    /// Imitate the documentation build that docs.rs would do
     #[command(name = "docs-rs", version, author, disable_version_flag = true)]
     Doc(Doc),
 }
@@ -22,6 +22,10 @@ pub struct Doc {
     /// Print command lines as they are executed
     #[arg(short, long)]
     pub verbose: bool,
+
+    /// Coloring: auto, always, never
+    #[arg(long, value_name = "WHEN", hide_possible_values = true)]
+    pub color: Option<Coloring>,
 
     /// Print version
     #[arg(long)]
